@@ -25,3 +25,20 @@ sq1 = list(
 sq2 = [n ** 2 for n in range(10) if not n % 2]
 
 print(sq1, sq1 == sq2)                          # prints: [0, 4, 16, 36, 64] True
+
+
+# Nested Comprehensions
+# pairs.for.loop.py
+items = 'ABCDE'
+pairs = []
+for a in range(len(items)):
+    for b in range(a, len(items)):
+        pairs.append((items[a], items[b]))
+
+print pairs
+
+# pairs.list.comprehension.py
+items = 'ABCDE'
+pairs = [(items[a], items[b])
+    for a in range(len(items)) for b in range(a, len(items))]
+print pairs
