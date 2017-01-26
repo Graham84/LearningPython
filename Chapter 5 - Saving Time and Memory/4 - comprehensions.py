@@ -42,3 +42,40 @@ items = 'ABCDE'
 pairs = [(items[a], items[b])
     for a in range(len(items)) for b in range(a, len(items))]
 print pairs
+
+
+# pythagorean.triple.py
+from math import sqrt
+# this will generate all possible pairs
+mx = 10
+legs = [(a, b, sqrt(a**2 + b**2))
+    for a in range(1, mx) for b in range(a, mx)]
+# this will filter out all non pythagorean triples
+legs = list(
+    filter(lambda triple: triple[2].is_integer(), legs))
+print(legs)                     # prints: [(3, 4, 5.0), (6, 8, 10.0)]
+
+
+# pythagorean.triple.int.py
+from math import sqrt
+mx = 10
+legs = [(a, b, sqrt(a**2 + b**2))
+    for a in range(1, mx) for b in range(a, mx)]
+legs = filter(lambda triple: triple[2].is_integer(), legs)
+# this will make the third number in the tuples integer
+legs = list(
+    map(lambda triple: triple[:2] + (int(triple[2]), ), legs))
+print(legs)                     # prints: [(3, 4, 5), (6, 8, 10)]
+
+
+# pythagorean.triple.comprehension.py
+from math import sqrt
+# this step is the same as before
+mx = 10
+legs = [(a, b, sqrt(a**2 + b**2))
+    for a in range(1, mx) for b in range(a, mx)]
+# here we combine filter and map in one CLEAN list comprehension
+legs = [(a, b, int(c)) for a, b, c in legs if c.is_integer()]
+print(legs)                      # prints: [(3, 4, 5), (6, 8, 10)]
+
+
