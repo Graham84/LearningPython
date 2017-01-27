@@ -79,3 +79,29 @@ legs = [(a, b, int(c)) for a, b, c in legs if c.is_integer()]
 print(legs)                      # prints: [(3, 4, 5), (6, 8, 10)]
 
 
+# dictionary.comprehensions.py
+from string import ascii_lowercase
+lettermap = dict((c, k) for k, c in enumerate(ascii_lowercase, 1))
+print lettermap
+lettermap = {c: k for k, c in enumerate(ascii_lowercase, 1)}
+print lettermap
+
+
+# dictionary.comprehensions.duplicates.py
+word = 'Hello'
+swaps = {c: c.swapcase() for c in word}
+print(swaps)            # prints: {'o': 'O', 'l': 'L', 'e': 'E', 'H': 'h'}
+
+
+# dictionary.comprehensions.positions.py
+word = 'Hello'
+positions = {c: k for k, c in enumerate(word)}
+print(positions)        # prints: {'l': 3, 'o': 4, 'e': 1, 'H': 0}
+
+
+# set.comprehensions.py
+word = 'Hello'
+letters1 = set(c for c in word)
+letters2 = {c for c in word}
+print(letters1)                     # prints: {'l', 'o', 'H', 'e'}
+print(letters1 == letters2)         # prints: True
